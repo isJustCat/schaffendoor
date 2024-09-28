@@ -21,13 +21,13 @@ else
 fi
 
 if [ ! -d /sys/class/gpio/gpio$PIN ]; then
-  echo $PIN > /sys/class/gpio/export
+  echo $PIN | sudo tee /sys/class/gpio/export
 fi
 
-echo "in" > /sys/class/gpio/gpio$PIN/direction
-echo "out" > /sys/class/gpio/gpio$PIN/direction
+echo "in" | sudo tee /sys/class/gpio/gpio$PIN/direction
+echo "out" | sudo tee /sys/class/gpio/gpio$PIN/direction
 
-echo "0" > /sys/class/gpio/gpio$PIN/value
+echo "0" | sudo tee /sys/class/gpio/gpio$PIN/value
 sleep 1 
-echo "1" > /sys/class/gpio/gpio$PIN/value
-echo $PIN > /sys/class/gpio/unexport
+echo "1" | sudo tee /sys/class/gpio/gpio$PIN/value
+echo $PIN | sudo tee /sys/class/gpio/unexport
