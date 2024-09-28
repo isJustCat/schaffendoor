@@ -16,6 +16,7 @@ elif [ "$USER" == "close" ]; then
     echo "Closing door..."
     PIN=27 
 else
+    echo "you shall not pass"
     exit 1
 fi
 
