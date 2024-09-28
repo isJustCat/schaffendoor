@@ -14,7 +14,7 @@ elif [ "$USER" == "close" ]; then
     echo "Rickrolling folks on mondbasis..."
     echo "Locating Messlatte..."
     echo "Closing door..."
-    PIN=27
+    PIN=22
 else
     echo "You shall not pass!"
     exit 1
