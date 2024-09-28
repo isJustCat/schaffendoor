@@ -14,20 +14,18 @@ elif [ "$USER" == "close" ]; then
     echo "Rickrolling folks on mondbasis..."
     echo "Locating Messlatte..."
     echo "Closing door..."
-    PIN=27 
+    PIN=27
 else
-    echo "you shall not pass"
+    echo "You shall not pass!"
     exit 1
 fi
 
-if [ ! -d /sys/class/gpio/gpio$PIN ]; then
-  echo $PIN | sudo tee /sys/class/gpio/export
-fi
+sudo raspi-gpio set $PIN op
 
-echo "in" | sudo tee /sys/class/gpio/gpio$PIN/direction
-echo "out" | sudo tee /sys/class/gpio/gpio$PIN/direction
+sudo raspi-gpio set $PIN dl
 
-echo "0" | sudo tee /sys/class/gpio/gpio$PIN/value
-sleep 1 
-echo "1" | sudo tee /sys/class/gpio/gpio$PIN/value
-echo $PIN | sudo tee /sys/class/gpio/unexport
+sleep 1
+
+sudo raspi-gpio set $PIN dh
+
+echo "Action completed on GPIO pin $PIN"
